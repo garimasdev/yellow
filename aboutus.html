@@ -49,6 +49,160 @@
     <![endif]-->
 </head>
 
+
+<style>
+  /* Hotel Facilities Heading */
+  #hotel-facilities h2 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 2.5rem; /* Larger font size for prominence */
+    font-weight: 700; /* Bold text */
+    color: #D98600; /* Yellowish-orange color to match the theme */
+    text-align: center; /* Center the heading */
+    margin-bottom: 40px; /* Add space below the heading */
+    letter-spacing: 2px; /* Slightly increase letter spacing for better readability */
+    text-transform: uppercase; /* Uppercase for a bold statement */
+    position: relative; /* Position for the underline effect */
+    padding-bottom: 10px; /* Add space below the text for the underline */
+  }
+
+  /* Add an underline effect with a smooth transition */
+  #hotel-facilities h2::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* Width of the underline */
+    height: 4px; /* Height of the underline */
+    background-color: #D98600; /* Same color as the text */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+  }
+
+  /* Hover effect for the heading */
+  #hotel-facilities h2:hover::after {
+    width: 100%; /* Underline expands on hover */
+  }
+
+  /* Hover effect for the heading text */
+  #hotel-facilities h2:hover {
+    color: #c57600; /* Slightly darker color for the text on hover */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle text shadow for added effect */
+  }
+
+  /* Parallax and Header Section */
+  .parallax-effect, #parallax-pagetitle {
+    background-color: #75c5cf;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #D98600;
+  }
+
+  /* Button Style */
+  .btn-primary {
+    background-color: #D98600;
+    border-color: #D98600;
+  }
+
+  .btn-primary:hover {
+    background-color: #c57600;
+    border-color: #c57600;
+  }
+
+  /* Card Style */
+  .card {
+    background: #fff;
+    border: 1px solid #75c5cf;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    margin: 15px 0; /* Add margin to avoid tight spacing */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* Hover Effects */
+  .card:hover {
+    transform: translateY(-12px); /* Lift the card */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Bigger shadow on hover */
+  }
+
+  /* Icon Styling */
+  .card i {
+    font-size: 50px;
+    color: #D98600;
+    margin-bottom: 20px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .card:hover i {
+    color: #c57600; /* Change icon color on hover */
+  }
+
+  /* Card Title */
+  .card h4 {
+    font-size: 1.5rem;
+    color: #D98600;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .card:hover h4 {
+    color: #c57600; /* Change card title color on hover */
+  }
+
+  /* Card Description */
+  .card p {
+    font-size: 1.5rem;
+    color: #333;
+    line-height: 1.6;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .card:hover p {
+    color: #555; /* Slightly darker text on hover */
+  }
+
+  /* Adjustments for Layout */
+  #hotel-facilities .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Even spacing across the row */
+  }
+
+  /* Ensure even card height and alignment */
+  .col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  /* Adjust Responsiveness */
+  @media (max-width: 768px) {
+    .card {
+      padding: 20px;
+    }
+
+    .card i {
+      font-size: 40px; /* Slightly smaller icons on mobile */
+    }
+
+    .col-md-4 {
+      flex: 1 1 100%; /* Stack cards in a single column on mobile */
+      margin-bottom: 20px; /* Smaller spacing between stacked cards */
+    }
+  }
+</style>
+
+
 <body>
 
 <!-- Top header -->
@@ -86,7 +240,7 @@
         <a href="index.html" class="navbar-brand">         
         <!-- Logo -->
         <div id="logo"> 
-          <img id="default-logo" src="images/logo-banner.jpg" alt="Heritagehotel" style="height:55px;"> 
+          <img id="default-logo" src="images/logo-banner.jpg" alt="YellowHotel" style="height:55px;"> 
           <div class="navbar-header">
             <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle">
                 <span class="icon-bar"></span>
@@ -94,14 +248,17 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="index.html" class="navbar-brand">         
+
                 <!-- Logo -->
                 <div class="logo-container">
-                    <span class="hotel-name">Yellow Hotel</span>
+                  <img id="retina-logo" src="images/logo-banner.png" alt="YellowHotel" style="height: 76px;margin-top: -22px;width: 80px;border-radius: 40px;"> 
+
+                    <!-- <span class="hotel-name">Yellow Hotel</span>
                     <div class="stars">
                         <span class="star">★</span>
                         <span class="star">★</span>
                         <span class="star">★</span>
-                    </div>
+                    </div> -->
                 </div>
             </a>
         </div>
@@ -161,17 +318,75 @@
 
 
 <!-- About Us -->
-<section id="gallery" class="mt50">
-<div class="container">
-<p>Hotel The Yellow features accommodation with a terrace, free private parking and a restaurant. This 3-star hotel offers an ATM and a concierge service. The accommodation offers a 24-hour front desk, airport transfers, room service and free WiFi throughout the property.
-<br><br>
-Sukhna Lake is 4.3 km from Hotel The Yellow, while Mohali Cricket Stadium is 14 km from the property. Chandigarh Airport is 12 km away.
-<br><br>
-The banquet hall, caters to all kinds of events; such as weddings, birthday parties, conferences and live performances. The banquet hall can comfortably accommodate up to 150 people at once.</p>
-<br><br>
-</p>
+<section id="about-us" class="mt50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Welcome to Hotel The Yellow</h2>
+        <p>Your premier destination for a luxurious and convenient stay in Chandigarh. Situated in the heart of the city, our hotel offers easy access to some of the top locations that make Chandigarh a vibrant and exciting place to visit.</p>
+        <h3>Location</h3>
+        <p>Hotel The Yellow is strategically located, making it an ideal choice for both business and leisure travelers. Our hotel is within close proximity to several key attractions and landmarks in Chandigarh. Whether you’re visiting the prestigious PGI Hospital, exploring the academic excellence of Panjab University, admiring the art and culture at the Museum & Gallery, indulging in retail therapy at Elante Mall, strolling through the serene Rose Garden, or catching a bus to explore the city, our hotel’s location ensures that you are never far from where you need to be.</p>
+        <h3>Amenities</h3>
+        <p>At The Yellow, we take pride in offering premium accommodation that caters to all your needs. Our well-appointed rooms are designed to provide you with the utmost comfort and convenience during your stay.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="images/about.jpg" alt="Hotel The Yellow" class="img-responsive">
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- Hotel Facilities -->
+<section id="hotel-facilities" class="mt50">
+  <div class="container">
+    <h2 class="text-center">Hotel Facilities</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fa fa-car"></i>
+          <h4>Parking Space</h4>
+          <p>Large & Pristine Car Parking at Your Service in Our Hotel</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fa fa-cutlery"></i>
+          <h4>Authentic Food</h4>
+          <p>We proudly offer our guests authentic cuisine in our hotel.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fa fa-glass"></i>
+          <h4>Party Hall</h4>
+          <p>Spacious Event Venue Ready for You at Our Hotel</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fa fa-plug"></i>
+          <h4>Vehicle Charge</h4>
+          <p>Charging Stations for Electric Vehicles Offered at Our Hotel</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fa fa-wifi"></i>
+          <h4>Fibre Internet</h4>
+          <p>We offer high-speed internet connectivity at our hotel.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fa fa-coffee"></i>
+          <h4>Breakfast</h4>
+          <p>We offer an authentic breakfast experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Call To Action -->
 <section id="call-to-action" class="mt100">
