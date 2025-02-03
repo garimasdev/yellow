@@ -3,6 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 	// Error messages
 	$email = $_POST['email'];
+	$phone = $_POST['phone'];
 
 	$checkin = $_POST['checkin'];
 	$checkout = $_POST['checkout'];
@@ -15,6 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Attention! Please enter a valid email address.</div>';
 		exit();
 		}
+	else if (trim($phone) == '') 
+	{
+		echo '<div class="alert alert-danger alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Attention! Please enter your phone number.</div>';
+		exit();
+	}
 	  else
 	if (trim($room) == '')
 		{
@@ -38,21 +45,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		}
 
 	// Your e-mailadress.
-	$to = "info@hotelnaunabh.com";
+	// $to = "info@hotelnaunabh.com";
+	$to = "sachdevagarima25@gmail.com";
 
 	// Mail subject
 	$subject = "Good news! A reservation has been requested by $email";
 
 	// Mail content
 	$email_content = "Good news! A reservation has been requested by $email <br>
-
-The customer wants to check-in at: $checkin <br>
-and check-out at: $checkout<br>
-
-The customer requested a $room room for $adults adult(s) and $children child(ren).<br>
-
-You can contact the customer via email, $email or hit 'reply' in your email browser to make the reservation complete.
-";
+	The customer can be contacted at: $phone <br>
+	The customer wants to check-in at: $checkin <br>
+	and check-out at: $checkout<br>
+	The customer requested a $room room for $adults adult(s) and $children child(ren).<br>
+	You can contact the customer via email, $email or hit 'reply' in your email browser to make the reservation complete.
+	";
 	$message = wordwrap($email_content, 70);
 	// Mail headers
 	// Always set content-type when sending HTML email
