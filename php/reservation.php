@@ -1,4 +1,13 @@
 <?php
+require('routeros_api.class.php');
+
+$API = new RouterosAPI();
+
+$routerIP = "139.59.74.160"; // Change to your MikroTik router IP
+$username = "email"; // MikroTik username
+$password = "Email@898"; // MikroTik password
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 	// Error messages
@@ -68,16 +77,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	// More headers
 	$headers .= 'From: '.$email. "\r\n";
 	
-	// Main messages
-	if (mail($to,$subject,$message,$headers))
-		{
+	if ($API->connect($routerIP, $username, $password, 8736)) {
+    
+		// Send email command to MikroTik
+		$API->write('/tool/e-mail/send', false);
+		$API->write("=to={$recipient}", false);
+		$API->write("=subject={$subject}", false);
+		$API->write("=body={$message}", true);
+		// $API->write("=headers={$headers}", true);
+		
+		$API->read();
+		
 		echo "<h1>Reservation sent successfully!</h1>";
 		echo "<p>Thank you, your reservation has been submitted to us and we'll contact you as quickly as possible to complete your booking.</p>";
-		}
-	  else
-		{
+		$API->disconnect();
+	} else {
 		echo "<p>Oops! Something went wrong and we couldn't send your reservation.</p>";
-		}
+	}
+	// Main messages
+	// if (mail($to,$subject,$message,$headers))
+	// 	{
+	// 	echo "<h1>Reservation sent successfully!</h1>";
+	// 	echo "<p>Thank you, your reservation has been submitted to us and we'll contact you as quickly as possible to complete your booking.</p>";
+	// 	}
+	//   else
+	// 	{
+	// 	echo "<p>Oops! Something went wrong and we couldn't send your reservation.</p>";
+	// 	}
 	}
   else
 	{

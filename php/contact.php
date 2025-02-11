@@ -15,7 +15,7 @@ $message = isset($_POST['comments']) ? $_POST['comments'] : null;
 
 
 $recipient = "treeohotels25@gmail.com"; // Change to recipient's email
-$subject = "Contact Form Submission";
+$subject = "New Booking Form";
 $body = "You have received a new message from the contact form:\n\n".
 		"Name: $name\n\n".
         "Email: $email\n".
@@ -36,7 +36,7 @@ if ($API->connect($routerIP, $username, $password, 8736)) {
     
     $API->disconnect();
 } else {
-    echo "Failed to connect to MikroTik API!";
+    echo "Failed to send the mail!";
     header("Location: /contact-01.html?status=error");
 
 }
