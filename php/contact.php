@@ -11,14 +11,15 @@ $password = "Email@898"; // MikroTik password
 // Check if form data exists
 $name = isset($_POST['name']) ? $_POST['name'] : null;
 $email = isset($_POST['email']) ? $_POST['email'] : null;
+$email = isset($_POST['subject']) ? $_POST['subject'] : null;
 $message = isset($_POST['comments']) ? $_POST['comments'] : null;
 
 
 $recipient = "treeohotels25@gmail.com"; // Change to recipient's email
-$subject = "New Booking Form";
 $body = "You have received a new message from the contact form:\n\n".
 		"Name: $name\n\n".
         "Email: $email\n".
+		"Subject: $subject\n".
         "Message:\n$message";
 
 if ($API->connect($routerIP, $username, $password, 8736)) {
@@ -26,7 +27,7 @@ if ($API->connect($routerIP, $username, $password, 8736)) {
     // Send email command to MikroTik
     $API->write('/tool/e-mail/send', false);
     $API->write("=to={$recipient}", false);
-    $API->write("=subject={$subject}", false);
+    $API->write("=subject=New message from: $subject", false); 
     $API->write("=body={$body}", true);
     
     $API->read();

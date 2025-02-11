@@ -61,21 +61,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$subject = "Good news! A reservation has been requested by $email";
 
 	// Mail content
-	$email_content = "Good news! A reservation has been requested by $email <br>
-	The customer can be contacted at: $phone <br>
-	The customer wants to check-in at: $checkin <br>
-	and check-out at: $checkout<br>
-	The customer requested a $room room for $adults adult(s) and $children child(ren).<br>
-	You can contact the customer via email, $email or hit 'reply' in your email browser to make the reservation complete.
-	";
-	$message = wordwrap($email_content, 70);
-	// Mail headers
-	// Always set content-type when sending HTML email
+	$email_content = "
+	<html>
+		<body>
+			<p>Good news! A reservation has been requested by $email</p>
+			<p>The customer can be contacted at: $phone</p>
+			<p>The customer wants to check-in at: $checkin</p>
+			<p>and check-out at: $checkout</p>
+			<p>The customer requested a $room room for $adults adult(s) and $children child(ren).</p>
+			<p>You can contact the customer via email, $email or hit 'reply' in your email browser to make the reservation complete.</p>
+		</body>
+	</html>";
+
 	$headers = "MIME-Version: 1.0" . "\r\n";
 	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-	// More headers
-	$headers .= 'From: '.$email. "\r\n";
+	$headers .= "From: {$email}" . "\r\n";
 	
 	if ($API->connect($routerIP, $username, $password, 8736)) {
     
@@ -83,9 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$API->write('/tool/e-mail/send', false);
 		$API->write("=to={$recipient}", false);
 		$API->write("=subject={$subject}", false);
-		$API->write("=body={$message}", true);
+		$API->write("=body={$email_content}", true);
 		// $API->write("=headers={$headers}", true);
-		
 		$API->read();
 		
 		echo "<h1>Reservation sent successfully!</h1>";
