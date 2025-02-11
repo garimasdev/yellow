@@ -9,7 +9,7 @@ $password = "Email@898"; // MikroTik password
 
 
 // Check if form data exists
-$name = isset($_POST['name']) ? $_POST['phone'] : null;
+$name = isset($_POST['name']) ? $_POST['name'] : null;
 $email = isset($_POST['email']) ? $_POST['email'] : null;
 $message = isset($_POST['comments']) ? $_POST['comments'] : null;
 
