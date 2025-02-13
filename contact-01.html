@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700">
 
 <!-- Javascripts --> 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!-- Font Awesome 6 (CDN) -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
@@ -180,8 +182,11 @@
             <label for="comments" accesskey="C"><span class="required">*</span> Your message</label>
             <textarea name="comments" rows="9" id="comments" class="form-control"></textarea>
           </div>
-          <div class="g-recaptcha" data-sitekey="6Lf6P9YqAAAAAP7w0tUNdW35bc6KxEoL8tBIKVue"></div>
-          <button type="submit" class="btn  btn-lg btn-primary">Send message</button>
+          
+          <button type="submit" class="btn btn-lg btn-primary g-recaptcha" 
+          data-sitekey="6Lf6P9YqAAAAAP7w0tUNdW35bc6KxEoL8tBIKVue" 
+          data-callback="onSubmit" 
+          data-action="submit">Send message</button>
         </form>
       </div>
     </section>
@@ -204,12 +209,12 @@
         <div class="row">
           <div class="col-xs-4">
             <div class="box-icon"> <a href="https://www.facebook.com/pages/hoteltheyellow/" target="_blank">
-              <div class="circle"><i class="fa fa-facebook fa-lg"></i></div>
+              <div class="circle"><i class="fab fa-facebook"></i></div>
               </a> </div>
           </div>
           <div class="col-xs-4">
             <div class="box-icon"><a href="https://www.instagram.com/hoteltheyellow/" target="_blank">
-              <div class="circle"><i class="fa fa-instagram fa-lg"></i></div>
+              <div class="circle"><i class="fab fa-instagram"></i></div>
               </a> </div>
           </div>
           <!-- <div class="col-xs-4">
@@ -323,6 +328,13 @@
 
 <script>
 $('#copyR').html(new Date().getFullYear());
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("contactusform").submit();
+    }
 </script>
 
 <script>

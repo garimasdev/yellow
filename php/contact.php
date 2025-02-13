@@ -8,18 +8,20 @@ $username = "email"; // MikroTik username
 $password = "Email@898"; // MikroTik password
 
 
-$recaptcha_secret = '6Lf6P9YqAAAAAHpU31JqZraEcuBp_BnJbkU5X2-e';
-$recaptcha_response = $_POST['g-recaptcha-response'];
+// Secret key for reCAPTCHA verification
+$secretKey = "6Lf6P9YqAAAAAHpU31JqZraEcuBp_BnJbkU5X2-e";  // Replace with your Google reCAPTCHA Secret Key
+$response = $_POST['g-recaptcha-response'];  // Get the reCAPTCHA response from form submission
 
-$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
-$response_keys = json_decode($response, true);
+// Verify reCAPTCHA response with Google API
+$verifyUrl = "https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$response}";
+$verifyResponse = file_get_contents($verifyUrl);
+$responseKeys = json_decode($verifyResponse, true);
 
-if(intval($response_keys["success"]) !== 1) {
-    // CAPTCHA failed
-    header("Location: /contact-01.html?status=error");
+if(intval($responseKeys["success"]) !== 1) {
+    // reCAPTCHA failed
+    echo "reCAPTCHA verification failed!";
     exit;
 }
-
 
 
 // Check if honeypot field is filled (spam submission)
