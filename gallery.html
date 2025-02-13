@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700">
 
 <!-- Javascripts --> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script> 
@@ -391,10 +392,30 @@
     </div>
   </div>
 </footer>
+<!-- floating contact icon -->
+<div class="floating-icon">
+  <i class="fas fa-headset" onclick="toggleIcons()"></i>
+  <div class="floating-icons-container">
+      <a href="https://wa.me/9478884545" class="whatsapp-icon" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:9478884545" class="call-icon" target="_blank">
+          <i class="fa fa-phone"></i>
+      </a>
+  </div>
+</div>
+
+
 <!-- Go-top Button -->
 <div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
 <script>
 $('#copyR').html(new Date().getFullYear());
+
+// Function to toggle the icons container visibility
+function toggleIcons() {
+    const iconContainer = document.querySelector('.floating-icon');
+    iconContainer.classList.toggle('open');
+}
 </script>
 </body>
 </html>

@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$headers = "MIME-Version: 1.0" . "\r\n";
 	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 	$headers .= "From: {$email}" . "\r\n";
-	$wrapped_message = wordwrap($email_content, 70, "\n", true);
+	// $wrapped_message = wordwrap($email_content, 70, "\n", true);
 
 	
 	if ($API->connect($routerIP, $username, $password, 8736)) {
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$API->write('/tool/e-mail/send', false);
 		$API->write("=to={$recipient}", false);
 		$API->write("=subject={$subject}", false);
-		$API->write("=body={$wrapped_message}", true);
+		$API->write("=body={$message}", true);
 		// $API->write("=headers={$headers}", true);
 		$API->read();
 		
