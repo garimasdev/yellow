@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$API->write('/tool/e-mail/send', false);
 		$API->write("=to={$recipient}", false);
 		$API->write("=subject={$subject}", false);
-		$API->write("=body={$message}", true);
+		$API->write("=body={$email_content}", true);
 		// $API->write("=headers={$headers}", true);
 		$API->read();
 		
