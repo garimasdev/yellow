@@ -17,18 +17,24 @@ if (!empty($_POST['password'])) {
 // Check if form data exists
 $name = isset($_POST['name']) ? $_POST['name'] : null;
 $email = isset($_POST['email']) ? $_POST['email'] : null;
-$email = isset($_POST['subject']) ? $_POST['subject'] : null;
+$subject = isset($_POST['subject']) ? $_POST['subject'] : null;
 $message = isset($_POST['comments']) ? $_POST['comments'] : null;
 
 
+// Sanitize input to avoid HTML special characters breaking the email format
+$name = htmlspecialchars($name);
+$email = htmlspecialchars($email);
+$subject = htmlspecialchars($subject);
+$message = htmlspecialchars($message);
+
+
 $recipient = "treeohotels25@gmail.com"; // Change to recipient's email
-$wrapped_message = wordwrap($message, 70, "\n", true);
 
 $body = "You have received a new message from the contact form:\n\n".
 		"Name: $name\n\n".
         "Email: $email\n".
 		"Subject: $subject\n".
-        "Message:\n$wrapped_message";
+        "Message:\n$message";
 
 if ($API->connect($routerIP, $username, $password, 8736)) {
     
