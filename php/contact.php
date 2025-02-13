@@ -7,6 +7,21 @@ $routerIP = "139.59.74.160"; // Change to your MikroTik router IP
 $username = "email"; // MikroTik username
 $password = "Email@898"; // MikroTik password
 
+
+$recaptcha_secret = '6Lf6P9YqAAAAAHpU31JqZraEcuBp_BnJbkU5X2-e';
+$recaptcha_response = $_POST['g-recaptcha-response'];
+
+$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
+$response_keys = json_decode($response, true);
+
+if(intval($response_keys["success"]) !== 1) {
+    // CAPTCHA failed
+    header("Location: /contact-01.html?status=error");
+    exit;
+}
+
+
+
 // Check if honeypot field is filled (spam submission)
 if (!empty($_POST['password'])) {
     // Spam detected, exit the script without sending the email
@@ -30,7 +45,7 @@ $message = htmlspecialchars($message);
 
 $recipient = "treeohotels25@gmail.com"; // Change to recipient's email
 
-$body = "You have received a new message from the contact form:\n\n".
+$body = "You have received a new message from the yellow contact us form:\n\n".
 		"Name: $name\n\n".
         "Email: $email\n".
 		"Subject: $subject\n".
