@@ -45,7 +45,7 @@ $subject = htmlspecialchars($subject);
 $message = htmlspecialchars($message);
 
 
-$recipient = "treeohotels25@gmail.com"; // Change to recipient's email
+$recipient = "hoteltheyellow@gmail.com"; // Change to recipient's email
 
 $body = "You have received a new message from the yellow contact us form:\n\n".
 		"Name: $name\n\n".
