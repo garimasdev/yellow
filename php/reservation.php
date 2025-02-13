@@ -69,12 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	// Mail content
 	$email_content = "
-		Good news! A reservation has been requested by $email \n
-		The customer can be contacted at: $phone \n 
-		The customer wants to check-in at: $checkin \n
-		and check-out at: $checkout \n
-		The customer requested a $room room for $adults adult(s) and $children child(ren). \n
-		You can contact the customer via email, $email or hit 'reply' in your email browser to make the reservation complete. \n
+		Good news! A reservation has been requested by $email
+		The customer can be contacted at: $phone
+		The customer wants to check-in at: $checkin
+		and check-out at: $checkout
+		The customer requested a $room room for $adults adult(s) and $children child(ren).
+		You can contact the customer via email, $email or hit 'reply' in your email browser to make the reservation complete.
 		";
 
 	$headers = "MIME-Version: 1.0" . "\r\n";
