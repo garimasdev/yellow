@@ -61,8 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		}
 
 	// Your e-mailadress.
-	// $to = "info@hotelnaunabh.com";
-	$recipient = "treeohotels25@gmail.com";
+	// $recipient = "treeohotels25@gmail.com";
+	$recipient = "support@iberrywifi.in";
 	// $recipient = "hoteltheyellow@gmail.com";
 
 	// Mail subject
