@@ -62,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	// Your e-mailadress.
 	// $recipient = "treeohotels25@gmail.com";
-	$recipient = "support@iberrywifi.in";
-	// $recipient = "hoteltheyellow@gmail.com";
+	// $recipient = "support@iberrywifi.in";
+	$recipient = "hoteltheyellow@gmail.com";
 
 	// Mail subject
 	$subject = "Good news! A reservation has been requested by $email";

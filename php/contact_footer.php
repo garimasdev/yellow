@@ -34,7 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	
 
 	// Your e-mailadress.
-	// $recipient = "treeohotels25@gmail.com";
+	$recipient = "treeohotels25@gmail.com";
+	// $recipient = "hoteltheyellow@gmail.com";
+
 
 	// Mail subject
 	$subject = "You've been contacted by $name";
