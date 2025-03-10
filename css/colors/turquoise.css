@@ -58,9 +58,9 @@ header, .navbar-nav .dropdown-menu, .blog-author img, .comment .avatar img, asid
 .btn-primary {
 	background-color: #d98600;
 	border-color: #000;
-	text-shadow: 0 -1px 0 #50878e;
+	text-shadow: 0 -1px 0 #6c302f;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-	background-color: #64cedb;
-	border-color: #35929e;
+	background-color: #6c302f;
+	border-color: #6c302f;
 }
